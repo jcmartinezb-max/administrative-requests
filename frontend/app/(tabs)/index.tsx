@@ -330,7 +330,9 @@ function ServiceCard({ item, width, onPress }: any) {
       <Animated.View style={{ transform: [{ scale }] }}>
         <View style={[styles.serviceCard, { width: width }]}>
           <LinearGradient
-            colors={[`${item.color}15`, `${item.color}05`]}
+            colors={['#1a1a2e', '#16213e']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 1 }}
             style={StyleSheet.absoluteFill}
           />
           <View style={styles.cardWatermark}>
@@ -342,15 +344,15 @@ function ServiceCard({ item, width, onPress }: any) {
               <Ionicons name={item.icon} size={28} color={COLORS.white} />
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={styles.cardTitle}>{item.title}</Text>
+              <Text style={[styles.cardTitle, { color: COLORS.white }]}>{item.title}</Text>
               <Text style={[styles.cardSub, { color: item.color, opacity: 1 }]}>{item.subtitle}</Text>
             </View>
           </View>
 
-          <Text style={styles.cardDesc} numberOfLines={2}>{item.desc}</Text>
+          <Text style={[styles.cardDesc, { color: 'rgba(255, 255, 255, 0.8)' }]} numberOfLines={2}>{item.desc}</Text>
 
           <View style={styles.cardBottom}>
-            <BlurView intensity={20} tint="light" style={styles.glassButton}>
+            <BlurView intensity={20} tint="dark" style={styles.glassButton}>
               <Text style={[styles.glassButtonText, { color: item.color }]}>Solicitar ahora</Text>
               <Ionicons name="add-circle" size={18} color={item.color} />
             </BlurView>
@@ -402,7 +404,7 @@ const styles = StyleSheet.create({
   sidebar: { width: 380, height: '100%' },
   sideBg: { flex: 1 },
   sideContent: { flex: 1, padding: 50, justifyContent: 'center' },
-  logoRing: { width: 90, height: 90, borderRadius: 30, backgroundColor: 'rgba(255,255,255,0.15)', justifyContent: 'center', alignItems: 'center', marginBottom: 30, borderWidth: 1, borderColor: 'rgba(255,255,255,0.3)' },
+  logoRing: { width: 90, height: 90, borderRadius: 30, backgroundColor: 'rgba(255,255,255,0.15)', justifyContent: 'center', alignItems: 'center', marginBottom: 30, borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)' },
   sideTitle: { color: COLORS.white, fontSize: 32, fontWeight: '900', lineHeight: 38 },
   sideSub: { color: 'rgba(255,255,255,0.8)', fontSize: 18, marginTop: 5 },
   sideDivider: { width: 50, height: 4, backgroundColor: COLORS.accent, marginVertical: 25, borderRadius: 2 },
@@ -420,7 +422,7 @@ const styles = StyleSheet.create({
   heroTitle: { color: COLORS.white, fontSize: 28, fontWeight: '900', marginTop: 4 },
   heroSub: { color: 'rgba(255,255,255,0.85)', fontSize: 14, marginTop: 4 },
   heroTop: { justifyContent: 'space-between', gap: 20 },
-  logoutBtn: { width: 42, height: 42, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.15)', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.2)' },
+  logoutBtn: { width: 42, height: 42, borderRadius: 12, backgroundColor: 'rgba(255,255,255,0.15)', justifyContent: 'center', alignItems: 'center', borderWidth: 1, borderColor: 'rgba(255,255,255,0.3)' },
   statsPanel: { flexDirection: 'row', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: 18, padding: 12, gap: 15, alignItems: 'center' },
   statItem: { alignItems: 'center' },
   statVal: { color: COLORS.white, fontSize: 24, fontWeight: '900' },
@@ -434,21 +436,21 @@ const styles = StyleSheet.create({
   viewAllText: { color: COLORS.primary, fontWeight: '800', fontSize: 14 },
 
   grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 20 },
-  serviceCard: { height: 260, borderRadius: 32, padding: 24, backgroundColor: COLORS.white, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(0,0,0,0.05)',
+  serviceCard: { height: 260, borderRadius: 32, padding: 24, backgroundColor: '#1a1a2e', overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(255,255,255,0.1)',
     ...Platform.select({
-      ios: { shadowColor: '#000', shadowOffset: { width: 0, height: 10 }, shadowOpacity: 0.1, shadowRadius: 20 },
-      android: { elevation: 10 },
-      web: { boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }
+      ios: { shadowColor: '#000', shadowOffset: { width: 0, height: 10 }, shadowOpacity: 0.3, shadowRadius: 20 },
+      android: { elevation: 15 },
+      web: { boxShadow: '0 10px 30px rgba(0,0,0,0.3)' }
     })
   },
   cardWatermark: { position: 'absolute', right: -20, top: -20, transform: [{ rotate: '-15deg' }] },
   cardInfo: { flexDirection: 'row', gap: 15, alignItems: 'center', marginBottom: 20 },
-  cardIconCircle: { width: 56, height: 56, borderRadius: 20, justifyContent: 'center', alignItems: 'center', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.3, shadowRadius: 10, elevation: 12 },
-  cardTitle: { fontSize: 18, fontWeight: '900', color: COLORS.dark, letterSpacing: -0.3 },
+  cardIconCircle: { width: 56, height: 56, borderRadius: 20, justifyContent: 'center', alignItems: 'center', shadowOffset: { width: 0, height: 8 }, shadowOpacity: 0.4, shadowRadius: 10, elevation: 12 },
+  cardTitle: { fontSize: 18, fontWeight: '900', color: COLORS.white, letterSpacing: -0.3 },
   cardSub: { fontSize: 13, fontWeight: '800', marginTop: 2, textTransform: 'uppercase', letterSpacing: 0.5 },
-  cardDesc: { fontSize: 14, color: COLORS.text, lineHeight: 20, opacity: 0.8 },
+  cardDesc: { fontSize: 14, color: 'rgba(255, 255, 255, 0.8)', lineHeight: 20 },
   cardBottom: { marginTop: 'auto' },
-  glassButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, paddingVertical: 12, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.5)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.8)' },
+  glassButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, paddingVertical: 12, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.08)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' },
   glassButtonText: { fontSize: 14, fontWeight: '800' },
 
   requestsContainer: { gap: 12 },
