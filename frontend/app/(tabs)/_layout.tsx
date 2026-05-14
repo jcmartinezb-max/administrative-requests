@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
-import { Platform } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
 export default function TabLayout() {
@@ -9,35 +9,36 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: '#A9301E',
-        tabBarInactiveTintColor: '#94A3B8',
+        tabBarInactiveTintColor: '#CBD5E1',
         tabBarStyle: Platform.select({
           default: {
             backgroundColor: '#FFFFFF',
             borderTopWidth: 1,
             borderTopColor: '#E2E8F0',
-            height: 70,
-            paddingBottom: 12,
-            paddingTop: 8,
+            height: 80,
+            paddingBottom: 16,
+            paddingTop: 12,
             shadowColor: '#000',
-            shadowOffset: { width: 0, height: -2 },
-            shadowOpacity: 0.08,
-            shadowRadius: 8,
-            elevation: 8,
+            shadowOffset: { width: 0, height: -4 },
+            shadowOpacity: 0.12,
+            shadowRadius: 12,
+            elevation: 12,
           },
           web: {
             backgroundColor: '#FFFFFF',
             borderTopWidth: 1,
             borderTopColor: '#E2E8F0',
-            height: 70,
-            paddingBottom: 12,
-            paddingTop: 8,
-            boxShadow: '0 -2px 8px rgba(0,0,0,0.08)',
+            height: 80,
+            paddingBottom: 16,
+            paddingTop: 12,
+            boxShadow: '0 -4px 12px rgba(0,0,0,0.12)',
           },
         }),
         tabBarLabelStyle: {
-          fontSize: 11,
+          fontSize: 12,
           fontWeight: '700',
-          marginTop: 4,
+          marginTop: 6,
+          letterSpacing: 0.3,
         },
         headerShown: false,
       }}
@@ -47,19 +48,32 @@ export default function TabLayout() {
         options={{
           title: 'Inicio',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home" size={size + 2} color={color} />
+            <View style={styles.iconContainer}>
+              <Ionicons name="home" size={size + 3} color={color} />
+            </View>
           ),
         }}
       />
       <Tabs.Screen
         name="requests/index"
         options={{
-          title: 'Mis Solicitudes',
+          title: 'Solicitudes',
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="clipboard-outline" size={size + 2} color={color} />
+            <View style={styles.iconContainer}>
+              <Ionicons name="document-text" size={size + 3} color={color} />
+            </View>
           ),
         }}
       />
     </Tabs>
   );
 }
+
+const styles = StyleSheet.create({
+  iconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 32,
+    height: 32,
+  },
+});
