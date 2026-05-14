@@ -272,7 +272,7 @@ function HeroSection({ isDesktop, user, stats }: any) {
   const router = useRouter();
   return (
     <View style={[styles.hero, isDesktop && styles.heroDesktop]}>
-        <View style={[StyleSheet.absoluteFill, { backgroundColor: COLORS.primaryDark }]} />
+        <View style={[StyleSheet.absoluteFill, { backgroundColor: '#0F172A' }]} />
         <SafeAreaView style={styles.heroSafe}>
           <View style={[styles.heroTop, { flexDirection: isDesktop ? 'row' : 'column', alignItems: isDesktop ? 'center' : 'flex-start' }]}>
             <View style={{ flex: 1 }}>
@@ -352,10 +352,15 @@ function ServiceCard({ item, width, onPress }: any) {
           <Text style={[styles.cardDesc, { color: 'rgba(255, 255, 255, 0.8)' }]} numberOfLines={2}>{item.desc}</Text>
 
           <View style={styles.cardBottom}>
-            <BlurView intensity={20} tint="dark" style={styles.glassButton}>
-              <Text style={[styles.glassButtonText, { color: item.color }]}>Solicitar ahora</Text>
-              <Ionicons name="add-circle" size={18} color={item.color} />
-            </BlurView>
+            <LinearGradient
+              colors={[item.color, `${item.color}E6`]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 1 }}
+              style={styles.solidButton}
+            >
+              <Text style={[styles.solidButtonText, { color: COLORS.white }]}>Solicitar ahora</Text>
+              <Ionicons name="arrow-forward" size={18} color={COLORS.white} />
+            </LinearGradient>
           </View>
         </View>
       </Animated.View>
@@ -450,8 +455,8 @@ const styles = StyleSheet.create({
   cardSub: { fontSize: 13, fontWeight: '800', marginTop: 2, textTransform: 'uppercase', letterSpacing: 0.5 },
   cardDesc: { fontSize: 14, color: 'rgba(255, 255, 255, 0.8)', lineHeight: 20 },
   cardBottom: { marginTop: 'auto' },
-  glassButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, paddingVertical: 12, borderRadius: 16, backgroundColor: 'rgba(255,255,255,0.08)', borderWidth: 1, borderColor: 'rgba(255,255,255,0.15)' },
-  glassButtonText: { fontSize: 14, fontWeight: '800' },
+  solidButton: { flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 10, paddingVertical: 14, borderRadius: 16, shadowOffset: { width: 0, height: 4 }, shadowOpacity: 0.3, shadowRadius: 8, elevation: 8 },
+  solidButtonText: { fontSize: 15, fontWeight: '800' },
 
   requestsContainer: { gap: 12 },
   requestCard: { borderRadius: 22, overflow: 'hidden', borderWidth: 1, borderColor: 'rgba(0,0,0,0.04)' },
